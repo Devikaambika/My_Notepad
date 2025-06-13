@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudNote - Online Notepad</title>
+    <link rel="stylesheet" href="notepad.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="auth-container" id="authContainer">
+        <div class="auth-box">
+            <h2><i class="fas fa-cloud"></i> CloudNote</h2>
+            <p class="auth-subtitle" id="authSubtitle">Login to access your notes</p>
+
+            <form id="loginForm" class="auth-form">
+                <div class="input-group">
+                    <label for="loginUsername"><i class="fas fa-user"></i> Username</label>
+                    <input type="text" id="loginUsername" placeholder="Enter your username" required>
+                </div>
+                <div class="input-group">
+                    <label for="loginPassword"><i class="fas fa-lock"></i> Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn btn-primary auth-btn">Login</button>
+                <p id="loginError" class="auth-error-message"></p>
+                <p class="toggle-auth">Don't have an account? <span id="showSignup">Sign Up</span></p>
+            </form>
+
+            <form id="signupForm" class="auth-form" style="display: none;">
+                <div class="input-group">
+                    <label for="signupUsername"><i class="fas fa-user-plus"></i> Username</label>
+                    <input type="text" id="signupUsername" placeholder="Choose a username" required>
+                </div>
+                <div class="input-group">
+                    <label for="signupPassword"><i class="fas fa-key"></i> Password</label>
+                    <input type="password" id="signupPassword" placeholder="Choose a password" required>
+                </div>
+                <div class="input-group">
+                    <label for="confirmPassword"><i class="fas fa-check-circle"></i> Confirm Password</label>
+                    <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+                </div>
+                <button type="submit" class="btn btn-secondary auth-btn">Sign Up</button>
+                <p id="signupError" class="auth-error-message"></p>
+                <p class="toggle-auth">Already have an account? <span id="showLogin">Login</span></p>
+            </form>
+
+            <p class="demo-text">Note: This is a frontend-only demo. Data is stored in your browser.</p>
+        </div>
+    </div>
+
+    <div class="app-container" id="appContainer" style="display: none;">
+        <header class="header">
+            <div class="header-left">
+                <h1><i class="fas fa-cloud"></i> CloudNote</h1>
+                <span class="subtitle">Your thoughts, everywhere</span>
+            </div>
+            <div class="header-right">
+                <button class="btn btn-primary" id="newNoteBtn">
+                    <i class="fas fa-plus"></i> New Note
+                </button>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search notes..." id="searchInput">
+                </div>
+                <button class="btn btn-danger" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <h3>All Notes</h3>
+                    <span class="note-count" id="noteCount">0</span>
+                </div>
+                <div class="notes-list" id="notesList">
+                    <div class="empty-state">
+                        <i class="fas fa-sticky-note"></i>
+                        <p>No notes yet</p>
+                        <small>Create your first note to get started</small>
+                    </div>
+                </div>
+            </aside>
+
+            <section class="editor-area">
+                <div class="editor-header">
+                    <input type="text" placeholder="Note title..." id="noteTitle" class="title-input">
+                    <div class="editor-controls">
+                        <button class="btn btn-secondary" id="saveBtn">
+                            <i class="fas fa-save"></i> Save
+                        </button>
+                        <button class="btn btn-danger" id="deleteBtn">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </div>
+                </div>
+                <div class="editor-body">
+                    <textarea placeholder="Start writing your note..." id="noteContent" class="note-textarea"></textarea>
+                </div>
+                <div class="editor-footer">
+                    <div class="note-info">
+                        <span id="wordCount">0 words</span>
+                        <span id="lastSaved">Not saved</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="status-bar">
+            <div class="status-left">
+                <span id="statusMessage">Ready</span>
+            </div>
+            <div class="status-right">
+                <span id="totalNotes">0 total notes</span>
+            </div>
+        </footer>
+    </div>
+
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Note saved successfully!</span>
+    </div>
+
+    <script src="notepad.js"></script>
+</body>
+</html>
